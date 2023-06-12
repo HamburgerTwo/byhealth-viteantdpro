@@ -26,7 +26,7 @@ export default function antdLayout(): Plugin[] {
       async load(id) {
         if (id === virtualModuleId) {
           modulePath = (await this.resolve(name))?.id
-          modulePath = modulePath ?? require.resolve(name)
+          modulePath = modulePath ?? "./src/"+name
           const code = `export { default } from ${JSON.stringify(modulePath)};`
           return { code, map: new MagicString(code).generateMap() }
         }

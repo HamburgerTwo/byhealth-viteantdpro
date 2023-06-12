@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import antdLayout from '../plugins'
+import antdLayout from './plugins'
 import * as path from 'path'
 
 export default defineConfig({
