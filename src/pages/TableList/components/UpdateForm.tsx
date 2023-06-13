@@ -35,7 +35,7 @@ const UpdateForm: React.FC<UpdateFormProps> = (props) => {
               id: 'pages.searchTable.updateForm.ruleConfig',
               defaultMessage: '规则配置',
             })}
-            visible={props.updateModalVisible}
+            open={props.updateModalVisible}
             footer={submitter}
             onCancel={() => {
               props.onCancel()

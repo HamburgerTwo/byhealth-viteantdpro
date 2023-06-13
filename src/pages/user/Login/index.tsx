@@ -64,8 +64,8 @@ const Login: React.FC = () => {
         navigate(redirect || "/");
         return;
       }
-      // 如果失败去设置用户错误信息
-      setUserLoginState(msg);
+      // // 如果失败去设置用户错误信息
+      // setUserLoginState(msg);
     } catch (error) {
       const defaultLoginFailureMessage = intl.formatMessage({
         id: "pages.login.failure",
