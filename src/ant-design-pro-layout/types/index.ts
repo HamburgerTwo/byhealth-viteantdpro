@@ -28,5 +28,10 @@ export interface LayoutProps extends BasicLayoutProps {
       name: string
     }
   }
+  avatarProps: {
+    avatar: string
+      name: string,
+      size: string,
+  }
   rightContentProps?: LayoutProps['rightContentOptions']
 }

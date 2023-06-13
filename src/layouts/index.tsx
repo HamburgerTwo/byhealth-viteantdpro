@@ -31,6 +31,11 @@ export default function LayoutWrapper() {
       waterMarkProps={{
         content: currentUser?.name,
       }}
+      avatarProps={{
+        src: currentUser?.avatar || 'https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg',
+        title: currentUser?.name,
+        size: 'small',
+      }}
       footerRender={() => <Footer />}
       onPageChange={() => {
         // 如果没有登录，重定向到 login
