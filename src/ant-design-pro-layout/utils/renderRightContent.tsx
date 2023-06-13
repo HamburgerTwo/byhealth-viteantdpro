@@ -40,7 +40,7 @@ export function renderRightContent(
   return (
     <div className="umi-plugin-layout-right anticon">
       {logout ? (
-        <Dropdown overlay={menu} overlayClassName="umi-plugin-layout-container">
+        <Dropdown menu={menu} overlayClassName="umi-plugin-layout-container">
           {avatar}
         </Dropdown>
       ) : (

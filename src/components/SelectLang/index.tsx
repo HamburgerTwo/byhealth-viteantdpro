@@ -114,7 +114,7 @@ export const SelectLang: React.FC<SelectLangProps> = (props) => {
   }
 
   return (
-    <HeaderDropdown overlay={langMenu} placement="bottomRight" {...restProps}>
+    <HeaderDropdown menu={langMenu} placement="bottomRight" {...restProps}>
       <span className={globalIconClassName} style={inlineStyle}>
         <i
           className="anticon"
