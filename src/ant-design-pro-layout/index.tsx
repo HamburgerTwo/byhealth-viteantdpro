@@ -38,7 +38,6 @@ const Layout = (props: LayoutProps) => {
     () => traverseRoutes(props.routes, true),
     [props.routes]
   );
-
   const location = useLocation();
 
   const matchResult = matchRoutes(routes, location);
@@ -71,7 +70,7 @@ const Layout = (props: LayoutProps) => {
     <Suspense fallback="icon loading ~~~">
       <ProLayout
         title="Ant Design Pro"
-        route={{ routes: menusRoutes }}
+        
         location={location}
         navTheme="dark"
         siderWidth={256}
@@ -99,6 +98,7 @@ const Layout = (props: LayoutProps) => {
           <Link to={route.path}>{route.breadcrumbName}</Link>
         )}
         {...layoutRestProps}
+        route={{ routes: menusRoutes }}
         avatarProps={avatarProps}
         actionsRender={(props) => {
           if (props.isMobile) return [];
