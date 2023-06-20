@@ -14,6 +14,7 @@ export default function antdLayout(): Plugin[] {
   let config: ResolvedConfig
 
   return [
+    (dynamicImportModule as any)(),
     {
       name: 'vite-plugin-antd-layout',
       enforce: 'pre',
@@ -48,6 +49,6 @@ export default function antdLayout(): Plugin[] {
         return null
       },
     },
-    (dynamicImportModule as any)(),
+   
   ]
 }

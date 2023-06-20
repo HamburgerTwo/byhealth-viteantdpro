@@ -4,9 +4,8 @@ import React from 'react'
 import classNames from 'classnames'
 import type { DropDownProps } from 'antd/es/dropdown'
 
-export type HeaderDropdownProps = {
+export interface HeaderDropdownProps  extends DropDownProps {
   overlayClassName?: string
-  menu: React.ReactNode | (() => React.ReactNode) | any
   placement?:
     | 'bottomLeft'
     | 'bottomRight'
@@ -14,7 +13,7 @@ export type HeaderDropdownProps = {
     | 'topCenter'
     | 'topRight'
     | 'bottomCenter'
-} & Omit<DropDownProps, 'menu'>
+}
 
 const HeaderDropdown: React.FC<HeaderDropdownProps> = ({
   overlayClassName: cls,

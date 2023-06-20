@@ -1,46 +1,46 @@
-import styles from './index.module.less'
-import HeaderDropdown from '../HeaderDropdown'
-import React, { useCallback } from 'react'
+import styles from "./index.module.less";
+import HeaderDropdown from "../HeaderDropdown";
+import React, { useCallback } from "react";
 import {
   LogoutOutlined,
   SettingOutlined,
   UserOutlined,
-} from '@ant-design/icons'
-import { Avatar, Menu, Spin } from 'antd'
+} from "@ant-design/icons";
+import { Avatar, Menu, Spin } from "antd";
 import {
   createSearchParams,
   useLocation,
   useNavigate,
   useSearchParams,
-} from 'react-router-dom'
+} from "react-router-dom";
 import {
   useLogoutMutation,
   useUserInfoQuery,
-} from '@/services/ant-design-pro/login'
+} from "@/services/ant-design-pro/login";
 
 export interface GlobalHeaderRightProps {
-  menu?: boolean
+  menu?: boolean;
 }
 
 const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
-  const location = useLocation()
-  const navigate = useNavigate()
-  const [searchParams] = useSearchParams()
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
-  const { data: currentUser, isLoading } = useUserInfoQuery()
+  const { data: currentUser, isLoading } = useUserInfoQuery();
 
-  const { mutate: logout } = useLogoutMutation()
+  const { mutate: logout } = useLogoutMutation();
 
   /**
    * 退出登录，并且将当前的 url 保存
    */
   const loginOut = async () => {
-    await logout()
-    const { search, pathname } = location
+    await logout();
+    const { search, pathname } = location;
     // Note: There may be security issues, please note
     if (
-      window.location.pathname !== '/user/login' &&
-      !searchParams.has('redirect')
+      window.location.pathname !== "/user/login" &&
+      !searchParams.has("redirect")
     ) {
       navigate(
         `/user/login?${createSearchParams({
@@ -49,18 +49,18 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
         {
           replace: true,
         }
-      )
+      );
     }
-  }
+  };
 
   const onMenuClick = useCallback((event: any) => {
-    const { key } = event
-    if (key === 'logout') {
-      loginOut()
-      return
+    const { key } = event;
+    if (key === "logout") {
+      loginOut();
+      return;
     }
-    navigate(`/account/${key}`)
-  }, [])
+    navigate(`/account/${key}`);
+  }, []);
 
   const loading = (
     <span className={`${styles.action} ${styles.account}`}>
@@ -72,11 +72,11 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
         }}
       />
     </span>
-  )
+  );
 
-  if (isLoading) return loading
+  if (isLoading) return loading;
 
-  if (!currentUser || !currentUser.name) return loading
+  if (!currentUser || !currentUser.name) return loading;
 
   const menuHeaderDropdown = (
     <Menu className={styles.menu} selectedKeys={[]} onClick={onMenuClick}>
@@ -96,12 +96,23 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
 
       <Menu.Item key="logout">
         <LogoutOutlined />
-        退出登录
       </Menu.Item>
     </Menu>
-  )
+  );
   return (
-    <HeaderDropdown menu={menuHeaderDropdown}>
+    <HeaderDropdown
+      menu={{
+        items: [
+          {
+            icon: <LogoutOutlined />,
+            label: "退出登录",
+            key: "logout",
+          },
+        ],
+        selectedKeys: [],
+        onClick: onMenuClick,
+      }}
+    >
       <span className={`${styles.action} ${styles.account}`}>
         <Avatar
           size="small"
@@ -112,7 +123,7 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
         <span className={`${styles.name} anticon`}>{currentUser.name}</span>
       </span>
     </HeaderDropdown>
-  )
-}
+  );
+};
 
-export default AvatarDropdown
+export default AvatarDropdown;

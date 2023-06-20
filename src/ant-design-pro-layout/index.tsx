@@ -24,7 +24,6 @@ const Layout = (props: LayoutProps) => {
     children,
     rightContentRender,
     childrenRender = (c) => c,
-    avatarProps,
     ...restProps
   } = props;
 
@@ -99,16 +98,7 @@ const Layout = (props: LayoutProps) => {
         )}
         {...layoutRestProps}
         route={{ routes: menusRoutes }}
-        avatarProps={avatarProps}
-        actionsRender={(props) => {
-          if (props.isMobile) return [];
-          return [
-            <Button type="primary" onClick={logoutfunc}>
-              登出
-            </Button>,
-            ,
-          ];
-        }}
+        
       >
         <Suspense fallback={fallback}>
           <Exception matches={matchResult}>

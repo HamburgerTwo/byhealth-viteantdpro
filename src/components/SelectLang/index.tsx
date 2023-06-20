@@ -94,13 +94,7 @@ export const SelectLang: React.FC<SelectLangProps> = (props) => {
     ? (params) => onItemClick(params)
     : changeLang
 
-  const langMenu = (
-    <Menu
-      selectedKeys={[locale]}
-      items={allLangUIConfig}
-      onClick={handleClick}
-    ></Menu>
-  )
+  
 
   const inlineStyle = {
     cursor: 'pointer',
@@ -114,7 +108,11 @@ export const SelectLang: React.FC<SelectLangProps> = (props) => {
   }
 
   return (
-    <HeaderDropdown menu={langMenu} placement="bottomRight" {...restProps}>
+    <HeaderDropdown menu={{
+      selectedKeys:[locale],
+      items:allLangUIConfig,
+      onClick:handleClick
+    }} placement="bottomRight" {...restProps}>
       <span className={globalIconClassName} style={inlineStyle}>
         <i
           className="anticon"
