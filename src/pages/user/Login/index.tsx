@@ -7,7 +7,7 @@ import {
   UserOutlined,
   WeiboCircleOutlined,
 } from "@ant-design/icons";
-import { Alert, Tabs, message } from "antd";
+import { Alert, Tabs, App } from "antd";
 import React, { useState } from "react";
 import {
   LoginForm,
@@ -48,7 +48,7 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
 
   const { mutateAsync: login } = useLoginMutation();
-
+  const { message } = App.useApp();
   const handleSubmit = async (values: LoginParams) => {
     
     try {
@@ -79,9 +79,7 @@ const Login: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <button onClick={() => {
-        navigate("/");
-      }}>1111</button>
+      
       <div className={styles.lang} data-lang>
         <SelectLang />
       </div>

@@ -147,23 +147,23 @@ const TableList: React.FC = () => {
       sorter: true,
       dataIndex: 'updatedAt',
       valueType: 'dateTime',
-      renderFormItem: (item, { defaultRender, ...rest }, form) => {
-        const status = form.getFieldValue('status')
-        if (`${status}` === '0') return false
+      // renderFormItem: (item, { defaultRender, ...rest }, form) => {
+      //   const status = form.getFieldValue('status')
+      //   if (`${status}` === '0') return false
 
-        if (`${status}` === '3') {
-          return (
-            <Input
-              {...rest}
-              placeholder={intl.formatMessage({
-                id: 'pages.searchTable.exception',
-                defaultMessage: 'Please enter the reason for the exception!',
-              })}
-            />
-          )
-        }
-        return defaultRender(item)
-      },
+      //   if (`${status}` === '3') {
+      //     return (
+      //       <Input
+      //         {...rest}
+      //         placeholder={intl.formatMessage({
+      //           id: 'pages.searchTable.exception',
+      //           defaultMessage: 'Please enter the reason for the exception!',
+      //         })}
+      //       />
+      //     )
+      //   }
+      //   return defaultRender(item)
+      // },
     },
     {
       title: (
@@ -283,8 +283,8 @@ const TableList: React.FC = () => {
           defaultMessage: 'New rule',
         })}
         width="400px"
-        visible={createModalVisible}
-        onVisibleChange={handleModalVisible}
+        open={createModalVisible}
+        onOpenChange={handleModalVisible}
         onFinish={async (value) => {
           const success = await addRule(value as RuleListItem)
           if (success) {
