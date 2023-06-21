@@ -24,5 +24,6 @@ export default defineConfig({
       },
     },
   },
+  
   plugins: [react(), antdLayout()],
 })

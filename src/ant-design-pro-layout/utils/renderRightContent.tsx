@@ -7,14 +7,14 @@ export function renderRightContent(
 ) {
   const { loading, logout, userInfo } = options || {}
 
-  const menu = (
-    <Menu className="umi-plugin-layout-menu">
-      <Menu.Item key="logout" onClick={() => {}}>
-        <LogoutOutlined />
-        退出登录
-      </Menu.Item>
-    </Menu>
-  )
+  // const menu = (
+  //   <Menu className="umi-plugin-layout-menu">
+  //     <Menu.Item key="logout" onClick={() => {}}>
+  //       <LogoutOutlined />
+  //       退出登录
+  //     </Menu.Item>
+  //   </Menu>
+  // )
 
   const avatar = (
     <span className="umi-plugin-layout-action">
@@ -40,9 +40,10 @@ export function renderRightContent(
   return (
     <div className="umi-plugin-layout-right anticon">
       {logout ? (
-        <Dropdown menu={menu} overlayClassName="umi-plugin-layout-container">
-          {avatar}
-        </Dropdown>
+        // <Dropdown menu={menu} overlayClassName="umi-plugin-layout-container">
+        //   {avatar}
+        // </Dropdown>
+        <div />
       ) : (
         avatar
       )}
