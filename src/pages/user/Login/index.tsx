@@ -50,6 +50,7 @@ const Login: React.FC = () => {
   const { mutateAsync: login } = useLoginMutation();
 
   const handleSubmit = async (values: LoginParams) => {
+    
     try {
       const msg = await login({ ...values, type });
       if (msg.status === "ok") {
@@ -78,6 +79,9 @@ const Login: React.FC = () => {
 
   return (
     <div className={styles.container}>
+      <button onClick={() => {
+        navigate("/");
+      }}>1111</button>
       <div className={styles.lang} data-lang>
         <SelectLang />
       </div>
